@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/cordova/platforms/android/CordovaLib/CordovaLib.iml" filepath="$PROJECT_DIR$/cordova/platforms/android/CordovaLib/CordovaLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cordova/platforms/android/app/app.iml" filepath="$PROJECT_DIR$/cordova/platforms/android/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cordova/plugins/cordova-plugin-device/cordova-plugin-device.iml" filepath="$PROJECT_DIR$/cordova/plugins/cordova-plugin-device/cordova-plugin-device.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cordova/plugins/cordova-plugin-file/src/cordova-plugin-file.iml" filepath="$PROJECT_DIR$/cordova/plugins/cordova-plugin-file/src/cordova-plugin-file.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cordova/plugins/cordova-plugin-inappbrowser/cordova-plugin-inappbrowser.iml" filepath="$PROJECT_DIR$/cordova/plugins/cordova-plugin-inappbrowser/cordova-plugin-inappbrowser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cordova/plugins/cordova-plugin-keyboard/cordova-plugin-keyboard.iml" filepath="$PROJECT_DIR$/cordova/plugins/cordova-plugin-keyboard/cordova-plugin-keyboard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cordova/plugins/cordova-plugin-media/cordova-plugin-media.iml" filepath="$PROJECT_DIR$/cordova/plugins/cordova-plugin-media/cordova-plugin-media.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cordova/plugins/cordova-plugin-safariviewcontroller/cordova-plugin-safariviewcontroller.iml" filepath="$PROJECT_DIR$/cordova/plugins/cordova-plugin-safariviewcontroller/cordova-plugin-safariviewcontroller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cordova/plugins/cordova-plugin-splashscreen/cordova-plugin-splashscreen.iml" filepath="$PROJECT_DIR$/cordova/plugins/cordova-plugin-splashscreen/cordova-plugin-splashscreen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cordova/plugins/cordova-plugin-statusbar/cordova-plugin-statusbar.iml" filepath="$PROJECT_DIR$/cordova/plugins/cordova-plugin-statusbar/cordova-plugin-statusbar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/inagave_app.iml" filepath="$PROJECT_DIR$/.idea/inagave_app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cordova/plugins/cordova-plugin-file/tests/tests.iml" filepath="$PROJECT_DIR$/cordova/plugins/cordova-plugin-file/tests/tests.iml" />
+    </modules>
+  </component>
+</project>

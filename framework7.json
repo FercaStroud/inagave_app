@@ -1,0 +1,37 @@
+{
+  "cwd": "/Users/fernandocardenas/Projects/inagave_app",
+  "type": [
+    "cordova"
+  ],
+  "name": "Inagave",
+  "framework": "vue",
+  "template": "split-view",
+  "bundler": "vite",
+  "cssPreProcessor": "less",
+  "theming": {
+    "customColor": true,
+    "color": "#3a7c8d",
+    "darkTheme": false,
+    "iconFonts": true,
+    "fillBars": false
+  },
+  "customBuild": false,
+  "pkg": "com.inagave",
+  "cordova": {
+    "folder": "cordova",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "plugins": [
+      "cordova-plugin-statusbar",
+      "cordova-plugin-keyboard",
+      "cordova-plugin-splashscreen",
+      "cordova-plugin-inappbrowser",
+      "cordova-plugin-file",
+      "cordova-plugin-media",
+      "cordova-plugin-safariviewcontroller",
+      "cordova-plugin-device"
+    ]
+  }
+}
