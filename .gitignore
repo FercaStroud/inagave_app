@@ -35,11 +35,11 @@ node_modules/
 Thumbs.db
 
 # Cordova
-#cordova/platforms/
-#cordova/plugins/
-#cordova/www/
+cordova/platforms/
+cordova/plugins/
+cordova/www/
 
 
 
 # Production build
-#www/
+www/

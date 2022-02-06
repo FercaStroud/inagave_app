@@ -2,9 +2,11 @@
 import HomePage from '../pages/home.vue';
 import AboutPage from '../pages/about.vue';
 import FormPage from '../pages/form.vue';
+import CatalogPage from '../pages/catalog.vue';
+import StorePage from '../pages/store.vue';
+import ProductPage from '../pages/product.vue';
+import SettingsPage from '../pages/settings.vue';
 
-import LeftPage1 from '../pages/left-page-1.vue';
-import LeftPage2 from '../pages/left-page-2.vue';
 import DynamicRoutePage from '../pages/dynamic-route.vue';
 import RequestAndLoad from '../pages/request-and-load.vue';
 import NotFoundPage from '../pages/404.vue';
@@ -22,15 +24,19 @@ var routes = [
     path: '/form/',
     component: FormPage,
   },
+  {
+    path: '/store/',
+    component: StorePage,
+  },
+  {
+    path: '/product/:id/',
+    component: ProductPage,
+  },
+  {
+    path: '/settings/',
+    component: SettingsPage,
+  },
 
-  {
-    path: '/left-page-1/',
-    component: LeftPage1,
-  },
-  {
-    path: '/left-page-2/',
-    component: LeftPage2,
-  },
   {
     path: '/dynamic-route/blog/:blogId/post/:postId/',
     component: DynamicRoutePage,

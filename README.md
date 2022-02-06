@@ -12,17 +12,84 @@ Framework7 app created with following options:
   ],
   "name": "Inagave",
   "framework": "vue",
-  "template": "split-view",
+  "template": "tabs",
   "bundler": "vite",
   "cssPreProcessor": "less",
   "theming": {
     "customColor": true,
-    "color": "#3a7c8d",
+    "color": "#601403",
     "darkTheme": false,
     "iconFonts": true,
-    "fillBars": false
+    "fillBars": true
   },
-  "customBuild": false,
+  "customBuild": true,
+  "customBuildConfig": {
+    "rtl": false,
+    "darkTheme": true,
+    "lightTheme": true,
+    "themes": [
+      "ios",
+      "md",
+      "aurora"
+    ],
+    "components": [
+      "appbar",
+      "dialog",
+      "popup",
+      "login-screen",
+      "popover",
+      "actions",
+      "sheet",
+      "toast",
+      "preloader",
+      "progressbar",
+      "sortable",
+      "swipeout",
+      "accordion",
+      "contacts-list",
+      "virtual-list",
+      "list-index",
+      "timeline",
+      "tabs",
+      "panel",
+      "card",
+      "chip",
+      "form",
+      "input",
+      "checkbox",
+      "radio",
+      "toggle",
+      "range",
+      "stepper",
+      "smart-select",
+      "grid",
+      "calendar",
+      "picker",
+      "infinite-scroll",
+      "pull-to-refresh",
+      "lazy",
+      "data-table",
+      "fab",
+      "searchbar",
+      "messages",
+      "messagebar",
+      "swiper",
+      "photo-browser",
+      "notification",
+      "autocomplete",
+      "tooltip",
+      "gauge",
+      "skeleton",
+      "menu",
+      "color-picker",
+      "treeview",
+      "text-editor",
+      "area-chart",
+      "pie-chart",
+      "elevation",
+      "typography"
+    ]
+  },
   "pkg": "com.inagave",
   "cordova": {
     "folder": "cordova",
@@ -34,11 +101,10 @@ Framework7 app created with following options:
       "cordova-plugin-statusbar",
       "cordova-plugin-keyboard",
       "cordova-plugin-splashscreen",
+      "cordova-plugin-device",
       "cordova-plugin-inappbrowser",
-      "cordova-plugin-file",
-      "cordova-plugin-media",
       "cordova-plugin-safariviewcontroller",
-      "cordova-plugin-device"
+      "cordova-plugin-file"
     ]
   }
 }
@@ -97,9 +163,3 @@ framework7 assets --ui
 
 * [Framework7 Icons Reference](https://framework7.io/icons/)
 * [Community Forum](https://forum.framework7.io)
-
-## Support Framework7
-
-Love Framework7? Support project by donating or pledging on:
-- Patreon: https://patreon.com/framework7
-- OpenCollective: https://opencollective.com/framework7

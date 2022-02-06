@@ -2,7 +2,7 @@
 import path from 'path';
 import vue from '@vitejs/plugin-vue';
 
-import { injectHtml } from 'vite-plugin-html';
+import { createHtmlPlugin } from 'vite-plugin-html';
 
 process.env.TARGET = process.env.TARGET || 'web';
 const isCordova = process.env.TARGET === 'cordova';
@@ -17,9 +17,12 @@ const BUILD_DIR = path.resolve(
 export default {
   plugins: [
     vue(),
-    injectHtml({
-      injectData: {
-        TARGET: process.env.TARGET,
+    createHtmlPlugin({
+      minify: false,
+      inject: {
+        data: {
+          TARGET: process.env.TARGET,
+        },
       },
     }),
   ],

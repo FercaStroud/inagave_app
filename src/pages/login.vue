@@ -1,63 +1,72 @@
 <template lang="pug">
-f7-view()
-  f7-page.bg-login(login-screen='')
-    f7-block(style="top:-12%; position:relative")
-      img(
-        style="width:60%;left:20%;position:relative;"
-        src="../assets/agave.svg"
-      )
-      img(
-        style="width:60%;left:20%;position:relative;top:-35px;"
-        src="../assets/logo.svg"
-      )
+f7-login-screen(
+  :opened="!isLogged"
+)
+  f7-view
+    f7-page(login-screen='')
+      f7-login-screen-title
+        img(src="../assets/images/logo.svg" alt="Logo INAGAVE" style="")
+        .roboto-thin.color-primary(style="font-size:.5em") {{$t("strings.invest_in_agaves")}}
       f7-block
-        f7-list.glass(form='' inset)
-          f7-list-input(type='text' name='username' placeholder='Correo Electrónico')
-          f7-list-input(type='password' name='password' placeholder='Contraseña' )
-      f7-block
-        f7-button.margin-bottom.glass(@click='' outline) Inicia Sesión
-        f7-button(@click='' fill popup-open=".popup-swipe-handler") Quiero Registrarme
-        f7-block-footer
-          | Some text about login information.
+        f7-list(form='' inset)
+          f7-list-input(type='text' name='username' :placeholder='$t("strings.your_email")' v-model:value='username')
+          f7-list-input(type='password' name='password' :placeholder='$t("strings.your_password")' v-model:value='password')
+        f7-list
+          f7-list-button(:title='$t("buttons.login")' @click='setLogin(true)')
+          f7-list-button(:title='$t("buttons.register")' @click='registerModal = true')
+        f7-block-footer(style="padding-top:40px")
+          | {{ $t("strings.privacy_policy") }}
           br
-          | Click &quot;Sign In&quot; to close Login Screen
-  f7-popup.popup-swipe-handler(swipe-to-close)
-    f7-page
-      f7-navbar()
-        f7-nav-left Cancelar
-        f7-nav-title
-          img(
-            style="height:32px"
-            src="../assets/agave.svg"
-          )
-        f7-nav-right Regístrame
-
-      f7-block
-        f7-list.glass()
-          f7-list-input(type='text' name='' placeholder='Nombre(s)' clear-button )
-          f7-list-input(type='text' name='' placeholder='Apellido Paterno' clear-button )
-          f7-list-input(type='text' name='' placeholder='Apellido Materno' clear-button )
-      f7-block
-        f7-list.glass()
-          f7-list-input(type='email' name='' placeholder='Correo Electrónico' clear-button )
-      f7-block
-        f7-list.glass()
-          f7-list-input(type='text' name='' placeholder='Dirección' clear-button )
-          f7-list-input(type='text' name='' placeholder='País' clear-button )
-          f7-list-input(type='text' name='' placeholder='Ciudad' clear-button )
-          f7-list-input(type='text' name='' placeholder='Estado' clear-button )
-          f7-list-input(type='text' name='' placeholder='Municipio' clear-button)
-      f7-block
-        f7-list.glass()
-          f7-list-input(type='password' name=''  placeholder='Contraseña' clear-button )
+          | inagave.com
+  f7-popup(
+    v-model:opened="registerModal"
+  )
+    f7-navbar()
+      f7-nav-left(@click='registerModal = false')
+        .padding() {{$t("buttons.cancel")}}
+      f7-nav-title
+      f7-nav-right()
+        .padding {{$t("buttons.submit")}}
+    f7-page.bg-color-white(style="")
+      f7-block()
+        f7-block-header {{$t("pages.register")}}
+        f7-list()
+          f7-list-input(type='text' :placeholder='$t("strings.form_name")')
+          f7-list-input(type='text' :placeholder='$t("strings.form_lastname")')
+          f7-list-input(type='text' :placeholder='$t("strings.form_second_lastname")')
+          f7-list-input(type='email' :placeholder='$t("strings.form_email")')
+          f7-list-input(type='textarea' :placeholder='$t("strings.form_address")')
+          f7-list-input(type='text' :placeholder='$t("strings.form_municipality")')
+          f7-list-input(type='text' :placeholder='$t("strings.form_city")')
+          f7-list-input(type='text' :placeholder='$t("strings.form_country")')
+          f7-list-input(type='text' :placeholder='$t("strings.form_state")')
+          f7-list-input(type='password' :placeholder='$t("strings.your_password")')
+        f7-block-footer
+          br
+          | {{ $t("strings.privacy_policy") }}
+          br
+          | inagave.com
 </template>
-
 <script>
+import { useStore } from 'framework7-vue';
+import store from '../js/store'
 export default {
-  name: "login.vue"
-}
+  setup() {
+    const isLogged = useStore('isLogged');
+
+    const setLogin = (payload) => {
+      store.dispatch('setLogin', payload);
+    }
+
+    return {
+      isLogged,
+      setLogin,
+    };
+  },
+  data() {
+    return {
+      registerModal: false,
+    };
+  }
+};
 </script>
-
-<style scoped>
-
-</style>

@@ -1,3 +1,26 @@
+@font-face {
+  font-family: "Roboto Thin";
+  src: url("../fonts/Roboto-Thin.woff ");
+}
+
+@font-face {
+  font-family: "Roboto Light";
+  src: url("../fonts/Roboto-Light.woff ");
+}
+
+@font-face {
+  font-family: "Roboto Medium";
+  src: url("../fonts/Roboto-Medium.woff");
+}
+
+.roboto-thin {
+  font-family: "Roboto Thin", "Avenir Light";
+}
+
+body,html{
+  background-color: whitesmoke !important;
+}
+
 /* iOS Cordova Tweak */
 .device-cordova.device-ios {
   height: 100vh;
@@ -5,54 +28,89 @@
 
 /* Custom color theme properties */
 :root {
-  --f7-theme-color: #3a7c8d;
-  --f7-theme-color-rgb: 58, 124, 141;
-  --f7-theme-color-shade: #2e6370;
-  --f7-theme-color-tint: #4695aa;
+  --f7-theme-color: #3E7D8D;
+  --f7-theme-color-rgb: 62, 125, 141;
+  --f7-theme-color-shade: #346a77;
+  --f7-theme-color-tint: #4e9cb0;
 }
 
-/* Left Panel right border when it is visible by breakpoint */
-.panel-left.panel-in-breakpoint:before {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  width: 1px;
-  background: rgba(0,0,0,0.1);
-  content: '';
-  z-index: 6000;
+/* Invert navigation bars to fill style */
+:root,
+:root.theme-dark,
+:root .theme-dark {
+  --f7-bars-bg-color: var(--f7-theme-color);
+  --f7-bars-bg-color-rgb: var(--f7-theme-color-rgb);
+  --f7-bars-translucent-opacity: 0.9;
+  --f7-bars-text-color: #3E7D8D;
+  --f7-bars-link-color: #3E7D8D;
+  --f7-navbar-subtitle-text-color: rgba(62, 125, 141, 0.85);
+  --f7-bars-border-color: transparent;
+  --f7-tabbar-link-active-color: #3E7D8D;
+  --f7-tabbar-link-inactive-color: rgba(62, 125, 141, 0.54);
+  --f7-sheet-border-color: transparent;
+  --f7-tabbar-link-active-border-color: #346a77;
 }
 
-/* Hide navbar link which opens left panel when it is visible by breakpoint */
-.panel-left.panel-in-breakpoint ~ .view .navbar .panel-open[data-panel="left"] {
-  display: none;
+.appbar,
+.navbar,
+.toolbar,
+.subnavbar,
+.calendar-header,
+.calendar-footer {
+  --f7-touch-ripple-color: var(--f7-touch-ripple-white);
+  --f7-link-highlight-color: var(--f7-link-highlight-white);
+  --f7-link-touch-ripple-color: var(--f7-touch-ripple-white);
+  --f7-button-text-color: #fff;
+  --f7-button-pressed-bg-color: rgba(255, 255, 255, 0.1);
 }
 
-/*
-  Extra borders for main view and left panel for iOS theme when it behaves as panel (before breakpoint size)
-*/
-.ios .panel-left:not(.panel-in-breakpoint).panel-in ~ .view-main:before,
-.ios .panel-left:not(.panel-in-breakpoint).panel-closing ~ .view-main:before {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 1px;
-  background: rgba(0,0,0,0.1);
-  content: '';
-  z-index: 6000;
+.navbar-large-transparent,
+.navbar-large.navbar-transparent {
+  --f7-navbar-large-title-text-color: #000;
+
+  --r: 96;
+  --g: 20;
+  --b: 3;
+  --progress: var(--f7-navbar-large-collapse-progress);
+  --f7-bars-link-color: rgb(calc(var(--r) + (255 - var(--r)) * var(--progress)),
+  calc(var(--g) + (255 - var(--g)) * var(--progress)),
+  calc(var(--b) + (255 - var(--b)) * var(--progress)));
 }
 
-.bg-login{
-  background: url("../assets/bg2.jpg") center !important;
-  background-size: cover;
+.theme-dark .navbar-large-transparent,
+.theme-dark .navbar-large.navbar-transparent {
+  --f7-navbar-large-title-text-color: #fff;
 }
 
-.login-screen-content{
-  background: transparent !important;
+/* Your app custom styles here */
+.bg-color-transparent, .login-screen-content {
+  background-color: transparent !important;
 }
-.glass{
+
+.login-screen-title {
+  img {
+    max-width: 250px;
+  }
+}
+
+.navbar, .toolbar {
+  background-color: rgba(255, 255, 255, .60) !important;
   backdrop-filter: blur(25px);
-  background-color: rgba(255,255,255,.3);
+}
 
+.navbar-bg {
+  background-color: transparent !important;
+}
+
+.login-screen-page, .page {
+  //background-image: linear-gradient(#3E7D8D, #f7f7f8, #f7f7f8, #f7f7f8, #f7f7f8) !important;
+  //background: url(https://inagave.com/background_panel.jpg) no-repeat !important;
+}
+
+.product-header{
+  height: 250px;
+  font-family: Roboto, Avenir, sans-serif;
+  color:white !important;
+  text-shadow: 1px 1px #000;
+  font-size: 1.3em;
 }
