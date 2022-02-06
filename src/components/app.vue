@@ -11,7 +11,7 @@ f7-app(v-bind='f7params')
     // Tabbar for switching views-tabs
     f7-toolbar(tabbar='' labels='' bottom='')
       f7-link(tab-link='#view-home' tab-link-active='' icon-ios='f7:house_fill' icon-aurora='f7:house_fill' icon-md='material:home'  text='Home')
-      f7-link(tab-link='#view-store' icon-ios='f7:bag' icon-md='f7:bag' text='Store')
+      f7-link(tab-link='#view-store' icon-ios='f7:bag_fill' icon-md='f7:bag_fill' text='Store')
       f7-link(tab-link='#view-settings' icon-ios='f7:gear' icon-aurora='f7:gear' icon-md='material:settings' text='Settings')
     // Your main view/tab, should have "view-main" class. It also has "tab-active" class
     f7-view#view-home(main='' tab='' tab-active='' url='/')
@@ -25,7 +25,7 @@ f7-app(v-bind='f7params')
       f7-page
         f7-navbar(title='Popup')
           f7-nav-right
-            f7-link(popup-close='') Close
+            f7-link(popup-close='') {{ $t("buttons.close") }}
         f7-block
           p Popup content goes here.
   login

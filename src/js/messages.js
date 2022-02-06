@@ -21,12 +21,23 @@ const messages = {
             total_founds: 'Total funds in my account',
             total_investment: 'Total investment in plants (Estimated)',
             total_plants: 'My Plants (Total)',
+
+            with_maintenance: 'With Mantenimiento',
+            without_maintenance: 'Without Mantenimiento',
+
+            description: 'Description',
+            details: 'Details',
+
         },
         buttons:{
             login: 'Login',
             register: 'Register!',
             cancel: 'Cancel',
             submit: 'Submit',
+            close: 'Close',
+
+            with_maintenance: 'W/ - M',
+            without_maintenance: 'W/O - M',
         },
         pages:{
             register: 'We\'ll never share your info with anyone else.',
@@ -53,12 +64,22 @@ const messages = {
             total_investment: 'Inversión total en Plantas (Estimado)',
             total_plants: 'Mis Plantas (Total)',
 
+            with_maintenance: 'Con Mantenimiento',
+            without_maintenance: 'Sin Mantenimiento',
+
+            description: 'Descripción',
+            details: 'Detalles',
+
         },
         buttons:{
             login: 'Iniciar Sesión',
             register: '¡Quiero Registrarme!',
             cancel: 'Cancelar',
             submit: 'Enviar',
+            close: 'Cerrar',
+
+            with_maintenance: 'C/ - M',
+            without_maintenance: 'S/ - M',
         },
         pages:{
             register: 'Jamás compartiremos tus datos con nadie más.',
