@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-login-screen(
-  :opened="!isLogged"
+  :opened="!$store.state.isLogged"
 )
   f7-view
     f7-page(login-screen='')
@@ -9,10 +9,10 @@ f7-login-screen(
         .roboto-thin.color-primary(style="font-size:.5em") {{$t("strings.invest_in_agaves")}}
       f7-block
         f7-list(form='' inset)
-          f7-list-input(type='text' name='username' :placeholder='$t("strings.your_email")' v-model:value='username')
-          f7-list-input(type='password' name='password' :placeholder='$t("strings.your_password")' v-model:value='password')
+          f7-list-input(type='text' :placeholder='$t("strings.your_email")' v-model:value='email')
+          f7-list-input(type='password' :placeholder='$t("strings.your_password")' v-model:value='password')
         f7-list
-          f7-list-button(:title='$t("buttons.login")' @click='setLogin(true)')
+          f7-list-button(:title='$t("buttons.login")' @click='checkUser')
           f7-list-button(:title='$t("buttons.register")' @click='registerModal = true')
         f7-block-footer(style="padding-top:40px")
           | {{ $t("strings.privacy_policy") }}
@@ -52,21 +52,26 @@ import { useStore } from 'framework7-vue';
 import store from '../js/store'
 export default {
   setup() {
-    const isLogged = useStore('isLogged');
-
-    const setLogin = (payload) => {
-      store.dispatch('setLogin', payload);
-    }
-
     return {
-      isLogged,
-      setLogin,
     };
   },
   data() {
     return {
+      email: '',
+      password: '',
       registerModal: false,
     };
-  }
+  },
+  methods: {
+    checkUser(){
+      this.axios.post(this.$store.state.api, {
+        email: this.email,
+        password: this.password,
+      }).then((response) => {
+        console.log(response.data)
+      })
+      //this.$store.commit('setUser');
+    }
+  },
 };
 </script>

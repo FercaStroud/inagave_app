@@ -1,18 +1,6 @@
 <template lang="pug">
 f7-app(v-bind='f7params')
-  // Right panel with reveal effect
-  f7-panel(right='' reveal='' )
-    f7-view
-      f7-page
-        f7-navbar.navbar-bg-white()
-          f7-nav-left
-          f7-nav-title()
-            img(src="../assets/images/logo.svg" alt="Logo INAGAVE" style="height:32px")
-          f7-nav-right
-        f7-list()
-          f7-list-button(popup-open=".withdraws-popup" panel-close :text='$t("pages.withdraws")')
-          f7-list-button(popup-open=".payments-popup" panel-close :text='$t("pages.payments")')
-          f7-list-button(popup-open=".settings-popup" panel-close :text='$t("pages.settings")')
+  panel
 
   // Views/Tabs container
   f7-views.safe-areas(tabs='')
@@ -45,9 +33,10 @@ f7-app(v-bind='f7params')
   import Withdraws from "../pages/withdraws.vue";
   import Payments from "../pages/payments.vue";
   import Settings from "../pages/settings.vue";
+  import Panel from "./panel.vue";
 
   export default{
-    components: {Withdraws, Login, Payments, Settings},
+    components: {Panel, Withdraws, Login, Payments, Settings},
     setup() {
       const device = getDevice();
       // Framework7 Parameters

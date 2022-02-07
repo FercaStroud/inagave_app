@@ -35,6 +35,7 @@ const messages = {
             cancel: 'Cancel',
             submit: 'Submit',
             close: 'Close',
+            logout: 'Log Out',
             show_in_maps: 'Show in Maps',
 
             with_maintenance: 'W/ - M',
@@ -84,6 +85,7 @@ const messages = {
             cancel: 'Cancelar',
             submit: 'Enviar',
             close: 'Cerrar',
+            logout: 'Cerrar Sesión',
             show_in_maps: 'Ver en Maps',
 
             with_maintenance: 'C/ - M',
