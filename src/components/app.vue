@@ -49,7 +49,7 @@ f7-app(v-bind='f7params')
       // Framework7 Parameters
       const f7params = {
         name: 'Inagave', // App name
-        theme: 'auto', // Automatic theme detection
+        theme: 'ios', // Automatic theme detection
 
         id: 'com.inagave', // App bundle ID
         // App store
@@ -65,7 +65,7 @@ f7-app(v-bind='f7params')
         },
         // Cordova Statusbar settings
         statusbar: {
-          iosOverlaysWebView: true,
+          iosOverlaysWebView: false,
           androidOverlaysWebView: false,
         },
       };
@@ -84,9 +84,6 @@ f7-app(v-bind='f7params')
           if (device.cordova) {
             cordovaApp.init(f7);
           }
-
-          // Call F7 APIs here
-
         });
       });
 

@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page(name="home")
-  f7-navbar()
+  f7-navbar.navbar-bg-white
     f7-nav-left
     f7-nav-title(sliding)
       img(src="../assets/images/logo.svg" alt="Logo INAGAVE" style="height:32px")

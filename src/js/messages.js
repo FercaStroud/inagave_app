@@ -22,8 +22,8 @@ const messages = {
             total_investment: 'Total investment in plants (Estimated)',
             total_plants: 'My Plants (Total)',
 
-            with_maintenance: 'With Mantenimiento',
-            without_maintenance: 'Without Mantenimiento',
+            with_maintenance: 'With Maintenance',
+            without_maintenance: 'Without Maintenance',
 
             description: 'Description',
             details: 'Details',
@@ -35,6 +35,7 @@ const messages = {
             cancel: 'Cancel',
             submit: 'Submit',
             close: 'Close',
+            show_in_maps: 'Show in Maps',
 
             with_maintenance: 'W/ - M',
             without_maintenance: 'W/O - M',
@@ -77,6 +78,7 @@ const messages = {
             cancel: 'Cancelar',
             submit: 'Enviar',
             close: 'Cerrar',
+            show_in_maps: 'Ver en Maps',
 
             with_maintenance: 'C/ - M',
             without_maintenance: 'S/ - M',

@@ -1,29 +1,39 @@
 <template lang="pug">
 f7-page(name="store")
-  f7-navbar()
+  f7-navbar.navbar-bg-white()
     f7-nav-left
     f7-nav-title()
       img(src="../assets/images/logo.svg" alt="Logo INAGAVE" style="height:32px")
     f7-nav-right
+      f7-link(icon-ios="f7:menu" icon-aurora="f7:menu" icon-md="material:menu" panel-open="right")
 
-  f7-popup(:opened="modal")
-    f7-page
-      f7-navbar()
-        f7-nav-left
-        f7-nav-title
-        f7-nav-right
-          f7-link(@click="modal = false") Close
-      f7-subnavbar
-        f7-button {{ $t("buttons.with_maintenance") }} $12.30
-          small(style="font-size:.4em; position:absolute;margin-top:24px") {{ $t("strings.with_maintenance") }}
-        f7-button {{ $t("buttons.without_maintenance") }} $89.20
-          small(style="font-size:.4em; position:absolute;margin-top:24px") {{ $t("strings.without_maintenance") }}
+  f7-card(expandable='' v-for="i in 20")
+    f7-card-content(:padding='false')
+      .bg-color-primary(:style="{height: '300px'}")
+        f7-card-header.display-block(text-color='white') Predio ABC
+          p
+            small(:style='{opacity: 0.7}') {{ $t("strings.with_maintenance") }}
+            br
+            strong $23.00 (MXN)
 
-      f7-block
-
-      f7-block
-        f7-block-title
-          strong {{ $t("strings.details") }}
+            br
+            br
+            small(:style='{opacity: 0.7}') {{ $t("strings.without_maintenance") }} $89.20
+            br
+            strong $23.00 (MXN)
+        f7-link.card-opened-fade-in(card-close='' color='black' :style="{position: 'absolute', right: '15px', top: '15px'}" icon-f7='xmark_circle_fill')
+      .card-content-padding
+        f7-row
+          f7-col
+            img.width-100(src="https://via.placeholder.com/500" alt="")
+          f7-col
+            img.width-100(src="https://via.placeholder.com/500" alt="")
+          f7-col
+            img.width-100(src="https://via.placeholder.com/500" alt="")
+        f7-row
+          f7-col
+            p
+              strong {{ $t("strings.details") }}
         f7-row
           f7-col
             strong Municipality:
@@ -54,28 +64,22 @@ f7-page(name="store")
             strong Jimado At:
           f7-col
             span  23, March 2027
-      f7-block
-        f7-block-title
-          strong {{ $t("strings.description") }}
-        p.text-align-justify Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cupiditate distinctio hic nostrum repudiandae?
-          | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cupiditate distinctio hic nostrum repudiandae?
-          | Debitis dolores ex, expedita facere id laboriosam magni maxime minus odio placeat porro quaerat quasi ut!
-        p.text-align-justify Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cupiditate distinctio hic nostrum repudiandae?
-          | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cupiditate distinctio hic nostrum repudiandae?
-          | Debitis dolores ex, expedita facere id laboriosam magni maxime minus odio placeat porro quaerat quasi ut!
-  f7-block
-      f7-card(@click="showDetails")
-        f7-card-header.product-header(
-          class="no-border"
-          valign="bottom"
-          style="background-image:url('https://via.placeholder.com/600')"
-        ) Predio ABC
-        f7-card-content
-          f7-button {{ $t("buttons.with_maintenance") }} $12.30
-            small(style="font-size:.4em; position:absolute;margin-top:24px") {{ $t("strings.with_maintenance") }}
-          f7-button {{ $t("buttons.without_maintenance") }} $89.20
-            small(style="font-size:.4em; position:absolute;margin-top:24px") {{ $t("strings.without_maintenance") }}
+        f7-row
+          f7-col
+            f7-link(@click="openBrowser('https://www.google.com/maps/search/25.5069888,-103.3932446' )") {{ $t("buttons.show_in_maps") }}
+        f7-row
+          f7-col
+            p
+              strong {{ $t("strings.description") }}
 
+        f7-row
+          f7-col
+            p.text-align-justify Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cupiditate distinctio hic nostrum repudiandae?
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cupiditate distinctio hic nostrum repudiandae?
+              | Debitis dolores ex, expedita facere id laboriosam magni maxime minus odio placeat porro quaerat quasi ut!
+            p.text-align-justify Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cupiditate distinctio hic nostrum repudiandae?
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cupiditate distinctio hic nostrum repudiandae?
+            | Debitis dolores ex, expedita facere id laboriosam magni maxime minus odio placeat porro quaerat quasi ut!
 
 </template>
 <script>
@@ -105,9 +109,10 @@ export default {
     }
   },
   methods: {
-    showDetails(){
-      this.modal = true;
-    }
+    openBrowser(url) {
+      let options = "location=no,clearcache=yes,clearsessioncache=yes,zoom=yes,EnableViewPortScale=yes"
+      let ref = cordova.InAppBrowser.open(url, '_system', options);
+    },
   },
 };
 </script>
