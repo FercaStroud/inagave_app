@@ -42,6 +42,12 @@ const messages = {
         },
         pages:{
             register: 'We\'ll never share your info with anyone else.',
+            dashboard: 'Dashboard',
+            store: 'Catalog',
+            my_plants: 'My Plants',
+            withdraws: 'Withdraws',
+            settings: 'Settings',
+            payments: 'Payments',
         }
     },
     es: {
@@ -85,6 +91,12 @@ const messages = {
         },
         pages:{
             register: 'Jamás compartiremos tus datos con nadie más.',
+            dashboard: 'Tablero',
+            store: 'Catálogo',
+            my_plants: 'Mis Plantas',
+            settings: 'Configuraciones',
+            withdraws: 'Retiros y Fondos',
+            payments: 'Historial de Compras',
         }
     }
 }

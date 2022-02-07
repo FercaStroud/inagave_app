@@ -1,5 +1,5 @@
 <template lang="pug">
-f7-page(name="store")
+f7-page(name="plants")
   f7-navbar.navbar-bg-white()
     f7-nav-left
     f7-nav-title()
@@ -12,7 +12,7 @@ f7-page(name="store")
       f7-col(v-for="i in 4" width="100" medium="50")
         f7-card(expandable='' swipe-to-close)
           f7-card-content(:padding='false')
-            .bg-color-primary(:style="{height: '300px'}")
+            .bg-color-yellow(:style="{height: '300px'}")
               f7-card-header.display-block(text-color='white') Predio ABC
                 p
                   small(:style='{opacity: 0.7}') {{ $t("strings.with_maintenance") }}
