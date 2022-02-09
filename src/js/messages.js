@@ -5,16 +5,17 @@ const messages = {
             privacy_policy: 'Privacy Policy',
             your_email: 'Your E-mail',
             your_password: 'Your Password',
+            password_confirmation: 'Password Confirmation',
             form_name: '* Name',
             form_lastname: '* Lastname',
-            form_second_lastname: 'Apellido Paterno',
+            form_second_lastname: 'Second Lastname',
             form_email: '* E-mail',
             form_address: 'Address',
             form_municipality: 'Municipality',
             form_city: 'City',
             form_country: 'Country',
             form_state: 'State',
-            form_password: '* Password (MIN 8)',
+            form_password: '* Password (MIN 6)',
             agave_prices: 'Agave Prices',
 
             agave_prices: 'Precios de Agave por Año',
@@ -27,7 +28,10 @@ const messages = {
 
             description: 'Description',
             details: 'Details',
-
+            host_not_available: 'Host not Available',
+            successful_registration: 'Successful registration',
+            please_check_required_fields: 'Please check required fields',
+            welcome: 'Welcome',
         },
         buttons:{
             login: 'Login',
@@ -36,7 +40,10 @@ const messages = {
             submit: 'Submit',
             close: 'Close',
             logout: 'Log Out',
+            save: 'Save',
             show_in_maps: 'Show in Maps',
+            spanish: 'Spanish',
+            english: 'English',
 
             with_maintenance: 'W/ - M',
             without_maintenance: 'W/O - M',
@@ -57,6 +64,7 @@ const messages = {
             privacy_policy: 'Avíso de Privacidad',
             your_email: 'Tu E-mail',
             your_password: 'Tu Password',
+            password_confirmation: 'Confirma contraseña',
             form_name: '* Nombre',
             form_lastname: '* Apellido Materno',
             form_second_lastname: 'Apellido Paterno',
@@ -66,7 +74,7 @@ const messages = {
             form_city: 'Ciudad',
             form_country: 'País',
             form_state: 'Estado',
-            form_password: 'Contraseña (MIN 8)',
+            form_password: 'Contraseña (MIN 6)',
             agave_prices: 'Precios de Agave por Año',
             total_founds: 'Total de Fondos en mi Cuenta',
             total_investment: 'Inversión total en Plantas (Estimado)',
@@ -78,6 +86,10 @@ const messages = {
             description: 'Descripción',
             details: 'Detalles',
 
+            host_not_available: 'Servidor no Disponible',
+            successful_registration: 'Registro Exitoso',
+            please_check_required_fields: 'Favor de revisar campos requeridos',
+            welcome: 'Bienvenido'
         },
         buttons:{
             login: 'Iniciar Sesión',
@@ -87,9 +99,12 @@ const messages = {
             close: 'Cerrar',
             logout: 'Cerrar Sesión',
             show_in_maps: 'Ver en Maps',
+            save: 'Guardar',
 
             with_maintenance: 'C/ - M',
             without_maintenance: 'S/ - M',
+            spanish: 'Español',
+            english: 'Inglés',
         },
         pages:{
             register: 'Jamás compartiremos tus datos con nadie más.',

@@ -5,7 +5,7 @@ f7-panel(right='' reveal='' )
       f7-navbar.navbar-bg-white()
         f7-nav-left
         f7-nav-title()
-          img(src="../assets/images/logo.svg" alt="Logo INAGAVE" style="height:32px")
+          strong.roboto-thin {{$store.state.user.name}} {{$store.state.user.lastname}}, {{ $t("strings.welcome") }}
         f7-nav-right
       f7-list()
         f7-list-button(popup-open=".withdraws-popup" panel-close :text='$t("pages.withdraws")')
