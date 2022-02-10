@@ -34,10 +34,10 @@ const store = createStore({
     plugins: [createPersistedState()],
     state() {
         return {
-            api: 'http://192.168.100.19:8080/api/app/',
-            assets: 'http://192.168.100.19:8080/',
-            //api: 'http://localhost:8000/api/app/',
-            //assets: 'http://localhost:8000/',
+            //api: 'http://192.168.100.19:8080/api/app/',
+            //assets: 'http://192.168.100.19:8080/',
+            api: 'http://localhost:8000/api/app/',
+            assets: 'http://localhost:8000/',
             isLogged: false,
             user: {},
             withdraws: [],

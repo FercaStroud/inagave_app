@@ -49,7 +49,7 @@ f7-page(name="home" :page-content="false" @page:init="onPageInit")
         f7-block-header {{$t("strings.total_plants")}}
         f7-card
           f7-card-header
-            strong(style="color:#3A7C8D") {{stats.total_plants}}
+            strong(style="color:#3A7C8D") {{stats.total_plants}} {{$t("strings.plants")}}
 
       f7-block(v-if="!isLoading")
         f7-block-header {{$t("strings.total_founds")}}
@@ -108,7 +108,7 @@ export default {
       let vm = this;
       let t = this.$t;
       this.isLoading = true;
-      this.axios.get(this.$store.state.api + 'get/user/stats').then((response) => {
+      this.axios.post(this.$store.state.api + 'get/user/stats?user_id='+ vm.$store.state.user.id).then((response) => {
         vm.stats = response.data;
       }).catch(function (error) {
         console.log(error)

@@ -32,6 +32,19 @@ const messages = {
             successful_registration: 'Successful registration',
             please_check_required_fields: 'Please check required fields',
             welcome: 'Welcome',
+
+            municipality: 'Municipality',
+            estate_size: 'Estate Size',
+            plant_age: 'Plant Age',
+            quantity: 'Quantity',
+            planted_at: 'Planted At',
+            created_at: 'Created At',
+            jimado_at: 'Jumado At',
+            for_sale: 'For Sale',
+            true: 'True',
+            false: 'False',
+            plants: 'Plant(s)',
+
         },
         buttons:{
             login: 'Login',
@@ -89,7 +102,19 @@ const messages = {
             host_not_available: 'Servidor no Disponible',
             successful_registration: 'Registro Exitoso',
             please_check_required_fields: 'Favor de revisar campos requeridos',
-            welcome: 'Bienvenido'
+            welcome: 'Bienvenido',
+
+            municipality: 'Municipio',
+            estate_size: 'Dimensión del Predio',
+            plant_age: 'Edad de la Planta',
+            quantity: 'Disponibilidad',
+            planted_at: 'Plantado el',
+            created_at: 'Fecha de Compra',
+            jimado_at: 'Jimado el',
+            for_sale: 'A la venta',
+            true: 'Verdadero',
+            false: 'Falso',
+            plants: 'Planta(s)',
         },
         buttons:{
             login: 'Iniciar Sesión',

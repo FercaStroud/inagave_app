@@ -97,12 +97,12 @@ f7-page(name="store")
           f7-col
             strong Planted At:
           f7-col
-            span {{product.planted_at}}
+            span {{moment(product.planted_at).format("ddd MMM DD, YYYY [at] HH:mm a") }}
         f7-row
           f7-col
             strong Jimado At:
           f7-col
-            span {{product.jimado_at}}
+            span {{moment(product.jimado_at).format("ddd MMM DD, YYYY [at] HH:mm a") }}
         f7-row
           f7-col
             f7-link(@click="openBrowser('https://www.google.com/maps/search/' + product.location )") {{ $t("buttons.show_in_maps") }}
@@ -112,29 +112,28 @@ f7-page(name="store")
               strong {{ $t("strings.description") }}
 
         f7-row
-          f7-col
-            p.text-align-justify Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cupiditate distinctio hic nostrum repudiandae?
-              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cupiditate distinctio hic nostrum repudiandae?
-              | Debitis dolores ex, expedita facere id laboriosam magni maxime minus odio placeat porro quaerat quasi ut!
-            p.text-align-justify Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cupiditate distinctio hic nostrum repudiandae?
-              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cupiditate distinctio hic nostrum repudiandae?
-            | Debitis dolores ex, expedita facere id laboriosam magni maxime minus odio placeat porro quaerat quasi ut!
+          f7-col(v-html="product.description" )
+
 </template>
 <script>
 import {useStore} from 'framework7-vue';
 import store from '../js/store'
-
+import moment from 'moment'
 export default {
   setup() {
     return {};
   },
   data() {
     return {
+      moment: null,
       isLoading: false,
       modal: false,
       products: [],
       product: {},
     }
+  },
+  created: function () {
+    this.moment = moment;
   },
   mounted() {
     this.getProducts();
