@@ -3,7 +3,7 @@ f7-page(name="plants")
   f7-navbar.navbar-bg-white()
     f7-nav-left
     f7-nav-title()
-      img(src="../assets/images/logo.svg" alt="Logo INAGAVE" style="height:32px")
+      img(@click="getProducts" src="../assets/images/logo.svg" alt="Logo INAGAVE" style="height:32px")
     f7-nav-right
       f7-link(icon-ios="f7:menu" icon-aurora="f7:menu" icon-md="material:menu" panel-open="right")
 
