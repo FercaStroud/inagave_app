@@ -3,7 +3,7 @@ f7-page(name="plants")
   f7-navbar.navbar-bg-white()
     f7-nav-left
     f7-nav-title()
-      img(@click="getProducts" src="../assets/images/logo.svg" alt="Logo INAGAVE" style="height:32px")
+      img(@click="$store.dispatch('getUserProducts');" src="../assets/images/logo.svg" alt="Logo INAGAVE" style="height:32px")
     f7-nav-right
       f7-link(icon-ios="f7:menu" icon-aurora="f7:menu" icon-md="material:menu" panel-open="right")
 
@@ -17,7 +17,7 @@ f7-page(name="plants")
   //      .preloader
   //      .ptr-arrow
 
-  f7-list(media-list v-if="isLoading")
+  f7-list(media-list v-if="$store.state.isLoading")
     f7-list-item(
       v-for="n in 3"
       :key="n"
@@ -31,7 +31,7 @@ f7-page(name="plants")
         style="width: 40px; height: 40px; border-radius: 50%"
       )
 
-  f7-list(media-list v-if="isLoading")
+  f7-list(media-list v-if="$store.state.isLoading")
     f7-list-item(
       v-for="n in 3"
       :key="n"
@@ -48,8 +48,8 @@ f7-page(name="plants")
   f7-card(
     expandable
     swipe-to-close
-    v-if="!isLoading"
-    v-for="(product, key) in products"
+    v-if="!$store.state.isLoading"
+    v-for="(product, key) in $store.state.user.products"
     :key="key"
   )
     f7-card-content(:padding='false')
@@ -108,10 +108,11 @@ f7-page(name="plants")
         f7-row
           f7-col(v-html="product.description" )
 
-        f7-row(v-if="(product.maintenances).length > 0" )
-          f7-col
-            p
-              strong {{ $t("pages.payments") }}
+        div(v-if="product.maintenances !== undefined" )
+          f7-row(v-if="(product.maintenances).length > 0" )
+            f7-col
+              p
+                strong {{ $t("pages.payments") }}
         f7-row
           f7-col
             f7-card.bg-color-gray(style="padding:9px")
@@ -163,9 +164,7 @@ export default {
   data() {
     return {
       moment: null,
-      isLoading: false,
       modal: false,
-      products: [],
       product: {},
     }
   },
@@ -173,29 +172,15 @@ export default {
     this.moment = moment;
   },
   mounted() {
-    this.getProducts();
+    //this.$store.dispatch('getUserProducts');
   },
   methods: {
     onPageInit() {
-      this.getProducts();
+      //this.getProducts();
     },
     onPullToRefresh(e, done) {
-      this.getProducts();
-      e.detail();
-    },
-    getProducts() {
-      let vm = this;
-      let t = this.$t;
-      this.isLoading = true;
-      this.axios.post(this.$store.state.api + 'get/user/products?user_id='+ vm.$store.state.user.id).then((response) => {
-        vm.products = response.data;
-      }).catch(function (error) {
-        console.log(error)
-
-      }).finally(function () {
-        vm.isLoading = false;
-
-      });
+      //this.getProducts();
+      //e.detail();
     },
     openBrowser(url) {
       let options = "location=no,clearcache=yes,clearsessioncache=yes,zoom=yes,EnableViewPortScale=yes"

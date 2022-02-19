@@ -1,6 +1,7 @@
 const messages = {
     en: {
         strings: {
+            owner: 'Owner',
             invest_in_agaves: 'Invest in Agave',
             privacy_policy: 'Privacy Policy',
             your_email: 'Your E-mail',
@@ -15,6 +16,9 @@ const messages = {
             form_city: 'City',
             form_country: 'Country',
             form_state: 'State',
+            form_size: 'Estate Size',
+            form_age: 'Plant Age',
+            form_quantity: 'Quantity',
             form_password: '* Password (MIN 6)',
             agave_prices: 'Agave Prices',
 
@@ -31,7 +35,9 @@ const messages = {
             host_not_available: 'Host not Available',
             successful_registration: 'Successful registration',
             please_check_required_fields: 'Please check required fields',
+            max_error: 'The total exceeds the maximum allowed.',
             welcome: 'Welcome',
+            generic_error: 'An error occurred, please try again.',
 
             municipality: 'Municipality',
             estate_size: 'Estate Size',
@@ -39,14 +45,17 @@ const messages = {
             quantity: 'Quantity',
             planted_at: 'Planted At',
             created_at: 'Created At',
-            jimado_at: 'Jumado At',
+            jimado_at: 'Jimado At',
             for_sale: 'For Sale',
             true: 'True',
             false: 'False',
             plants: 'Plant(s)',
-
+            total: 'Total',
+            pay_with: 'Pay With',
+            mercadopago: 'Mercado Pago',
+            paypal: 'PayPal',
         },
-        buttons:{
+        buttons: {
             login: 'Login',
             register: 'Register!',
             cancel: 'Cancel',
@@ -57,11 +66,12 @@ const messages = {
             show_in_maps: 'Show in Maps',
             spanish: 'Spanish',
             english: 'English',
+            checkout: 'Checkout',
 
             with_maintenance: 'W/ - M',
             without_maintenance: 'W/O - M',
         },
-        pages:{
+        pages: {
             register: 'We\'ll never share your info with anyone else.',
             dashboard: 'Dashboard',
             store: 'Catalog',
@@ -73,6 +83,7 @@ const messages = {
     },
     es: {
         strings: {
+            owner: 'Propietario',
             invest_in_agaves: 'Invierte en Agave',
             privacy_policy: 'Avíso de Privacidad',
             your_email: 'Tu E-mail',
@@ -86,6 +97,9 @@ const messages = {
             form_municipality: 'Municipio',
             form_city: 'Ciudad',
             form_country: 'País',
+            form_size: 'Tamaño del Predio',
+            form_age: 'Edad de la Planta',
+            form_quantity: 'Plantas disponibles',
             form_state: 'Estado',
             form_password: 'Contraseña (MIN 6)',
             agave_prices: 'Precios de Agave por Año',
@@ -99,6 +113,7 @@ const messages = {
             description: 'Descripción',
             details: 'Detalles',
 
+            generic_error: 'Ha ocurrido un error, intente de nuevo.',
             host_not_available: 'Servidor no Disponible',
             successful_registration: 'Registro Exitoso',
             please_check_required_fields: 'Favor de revisar campos requeridos',
@@ -115,8 +130,13 @@ const messages = {
             true: 'Verdadero',
             false: 'Falso',
             plants: 'Planta(s)',
+            total: 'Total',
+            pay_with: 'Pagar con',
+            mercadopago: 'Mercado Pago',
+            paypal: 'PayPal',
+            max_error: 'El total excede la cantidad máxima disponible',
         },
-        buttons:{
+        buttons: {
             login: 'Iniciar Sesión',
             register: '¡Quiero Registrarme!',
             cancel: 'Cancelar',
@@ -125,13 +145,14 @@ const messages = {
             logout: 'Cerrar Sesión',
             show_in_maps: 'Ver en Maps',
             save: 'Guardar',
+            checkout: 'Pagar',
 
             with_maintenance: 'C/ - M',
             without_maintenance: 'S/ - M',
             spanish: 'Español',
             english: 'Inglés',
         },
-        pages:{
+        pages: {
             register: 'Jamás compartiremos tus datos con nadie más.',
             dashboard: 'Tablero',
             store: 'Catálogo',

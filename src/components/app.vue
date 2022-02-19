@@ -7,8 +7,8 @@ f7-app(v-bind='f7params')
     // Tabbar for switching views-tabs
     f7-toolbar(tabbar='' labels='' bottom='')
       f7-link(tab-link='#view-home' tab-link-active='' icon-f7='house_fill' :text='$t("pages.dashboard")')
-      f7-link(tab-link='#view-store' icon-f7="rectangle_fill_on_rectangle_fill" :text='$t("pages.store")')
-      f7-link(tab-link='#view-plants' icon-f7='heart_fill' :text='$t("pages.my_plants")')
+      f7-link(tab-link='#view-store' @click="$store.dispatch('getProducts');" icon-f7="rectangle_fill_on_rectangle_fill" :text='$t("pages.store")')
+      f7-link(tab-link='#view-plants' @click="$store.dispatch('getUserProducts');" icon-f7='heart_fill' :text='$t("pages.my_plants")')
     // Your main view/tab, should have "view-main" class. It also has "tab-active" class
     f7-view#view-home(main='' tab='' tab-active='' url='/')
     // Catalog View
