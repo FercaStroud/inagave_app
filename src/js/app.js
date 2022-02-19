@@ -44,10 +44,10 @@ const store = createStore({
     plugins: [createPersistedState()],
     state() {
         return {
-            //api: 'http://192.168.100.19:8080/api/app/',
-            //assets: 'http://192.168.100.19:8080/',
-            api: 'http://localhost:8000/api/app/',
-            assets: 'http://localhost:8000/',
+            api: 'http://192.168.100.19:8080/api/app/',
+            assets: 'http://192.168.100.19:8080/',
+            //api: 'http://localhost:8000/api/app/',
+            //assets: 'http://localhost:8000/',
             isLogged: false,
             isLoading: false,
             user: {
@@ -61,7 +61,9 @@ const store = createStore({
             plants: [],
             products: [],
             locale: 'en',
-            MP_TOKEN: 'APP_USR-655f750c-4355-4210-a1c4-4e1745da9d1b',
+            //MP_TOKEN: 'APP_USR-655f750c-4355-4210-a1c4-4e1745da9d1b',
+            MP_TOKEN: 'TEST-14c03268-ce28-4220-93ef-d2f6faddbbed',
+        
         }
     },
     actions: {
