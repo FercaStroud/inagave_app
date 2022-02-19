@@ -40,11 +40,12 @@ f7-page(name="store")
     v-if="!$store.state.isLoading"
     v-for="(product, key) in $store.state.products"
     :key="key"
+    style="background: transparent !important"
   )
     f7-card-content(:padding='false')
-      .bg-color-primary(:style="{height: '300px'}")
+      .bg-color-primary(:style="{height: '60px'}")
         f7-card-header.display-block(text-color='white') {{product.estate}}
-          p
+          //p
             small(:style='{opacity: 0.7}') {{ $t("strings.with_maintenance") }}
             br
             strong ${{product.maintenance_price}} (MXN)
@@ -55,7 +56,7 @@ f7-page(name="store")
             br
             strong ${{product.price}}  (MXN)
         f7-link.card-opened-fade-in(card-close='' color='black' :style="{position: 'absolute', right: '15px', top: '15px'}" icon-f7='xmark_circle_fill')
-      .card-content-padding
+      .card-content-padding.glass
         f7-row
           f7-col(v-for="(image, key) in product.images" )
             img.width-100(:src="$store.state.assets + 'products/' + image.src" :alt="image.name")
@@ -149,6 +150,8 @@ f7-page(name="store")
               color="blue"
               @click="checkoutPaypal(product)"
             ) {{ $t("strings.paypal") }}
+        f7-row.margin-top.margin-bottom
+
 </template>
 <script>
 import {useStore} from 'framework7-vue';

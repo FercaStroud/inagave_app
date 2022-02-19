@@ -154,7 +154,7 @@ var cordovaApp = {
       cordovaApp.handleSplashscreen();
 
       // Handle Keyboard
-      cordovaApp.handleKeyboard();
+      //cordovaApp.handleKeyboard();
     });
   },
 };
