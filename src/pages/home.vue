@@ -17,7 +17,7 @@ f7-page(name="home" :page-content="false" @page:init="onPageInit")
         .preloader
         .ptr-arrow
 
-      f7-list(media-list v-if="isLoading")
+      f7-list(media-list v-if="$store.state.isLoading")
         f7-list-item(
           v-for="n in 3"
           :key="n"
@@ -31,7 +31,7 @@ f7-page(name="home" :page-content="false" @page:init="onPageInit")
             style="width: 40px; height: 40px; border-radius: 50%"
           )
 
-      f7-list(media-list v-if="isLoading")
+      f7-list(media-list v-if="$store.state.isLoading")
         f7-list-item(
           v-for="n in 3"
           :key="n"
@@ -45,26 +45,25 @@ f7-page(name="home" :page-content="false" @page:init="onPageInit")
             style="width: 40px; height: 40px; border-radius: 50%"
           )
 
-      f7-block(v-if="!isLoading")
+      f7-block(v-if="!$store.state.isLoading")
         f7-block-header {{$t("strings.total_plants")}}
         f7-card
           f7-card-header
-            strong(style="color:#3A7C8D") {{stats.total_plants}} {{$t("strings.plants")}}
+            strong(style="color:#3A7C8D") {{$store.state.stats.total_plants}} {{$t("strings.plants")}}
 
-      f7-block(v-if="!isLoading")
+      f7-block(v-if="!$store.state.isLoading")
         f7-block-header {{$t("strings.total_founds")}}
         f7-card
           f7-card-header
-            strong(style="color:#3A7C8D") ${{stats.total_user_founds}} (MXN)
+            strong(style="color:#3A7C8D") ${{ parseFloat($store.state.stats.total_user_founds).toFixed(2) }} (MXN)
 
-      f7-block(v-if="!isLoading")
+      f7-block(v-if="!$store.state.isLoading")
         f7-block-header {{$t("strings.total_investment")}}
         f7-card
           f7-card-header
-            strong(style="color:#3A7C8D") ${{stats.total_plant_founds}} (MXN)
+            strong(style="color:#3A7C8D") ${{ parseFloat($store.state.stats.total_plant_founds).toFixed(2) }} (MXN)
 
-
-      f7-block(v-if="!isLoading && prices.length !== 0")
+      f7-block(v-if="!$store.state.isLoading && prices.length !== 0")
         f7-block-header {{$t("strings.agave_prices")}}
         LineChart(:chartData="{labels: yearsArray, datasets: [{label: ' ', data: pricesArray, backgroundColor: ['#3A7C8D'],},],}")
 </template>
@@ -79,13 +78,7 @@ export default {
   },
   data() {
     return {
-      isLoading: false,
       registerModal: false,
-      stats:{
-        total_plant_founds: 0,
-        total_plants: 0,
-        total_user_founds: 0,
-      },
       prices:[],
       pricesArray:[],
       yearsArray:[],
@@ -93,30 +86,17 @@ export default {
     };
   },
   mounted() {
-    this.getUserStats();
+    this.$store.dispatch('getUserStats');
   },
   methods: {
     onPageInit() {
-      this.getUserStats();
+      this.$store.dispatch('getUserStats');
       this.getAgavePrices();
     },
     onPullToRefresh(e, done) {
-      this.getUserStats()
+      this.$store.dispatch('getUserStats');
+
       e.detail();
-    },
-    getUserStats() {
-      let vm = this;
-      let t = this.$t;
-      this.isLoading = true;
-      this.axios.post(this.$store.state.api + 'get/user/stats?user_id='+ vm.$store.state.user.id).then((response) => {
-        vm.stats = response.data;
-      }).catch(function (error) {
-        console.log(error)
-
-      }).finally(function () {
-        vm.isLoading = false;
-
-      });
     },
     getAgavePrices() {
       let vm = this;

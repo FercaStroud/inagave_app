@@ -44,10 +44,10 @@ const store = createStore({
     plugins: [createPersistedState()],
     state() {
         return {
-            api: 'http://192.168.100.19:8080/api/app/',
-            assets: 'http://192.168.100.19:8080/',
-            //api: 'http://localhost:8000/api/app/',
-            //assets: 'http://localhost:8000/',
+            //api: 'http://192.168.100.19:8080/api/app/',
+            //assets: 'http://192.168.100.19:8080/',
+            api: 'http://localhost:8000/api/app/',
+            assets: 'http://localhost:8000/',
             isLogged: false,
             isLoading: false,
             user: {
@@ -55,22 +55,29 @@ const store = createStore({
                     maintenances: []
                 }]
             },
-            withdraws: [],
+            stats: {
+                total_plant_founds: 0,
+                total_plants: 0,
+                total_user_founds: 0,
+            },
+            wallet: [],
             payments: [],
             prices: [],
             plants: [],
             products: [],
+            pricesArray: [],
+            yearsArray: [],
             locale: 'en',
             //MP_TOKEN: 'APP_USR-655f750c-4355-4210-a1c4-4e1745da9d1b',
             MP_TOKEN: 'TEST-14c03268-ce28-4220-93ef-d2f6faddbbed',
-        
+
         }
     },
     actions: {
-        setLoading({ commit }, payload) {
+        setLoading({commit}, payload) {
             commit('setLoading', payload);
         },
-        getPrices({ commit }) {
+        getPrices({commit}) {
             commit('setLoading', true)
             axios.get(this.state.api + 'app/get/agave/prices').then((response) => {
                 commit('setPrices', response.data)
@@ -81,7 +88,7 @@ const store = createStore({
                 commit('setLoading', false)
             });
         },
-        getProducts({ commit }) {
+        getProducts({commit}) {
             commit('setLoading', true)
             axios.get(this.state.api + 'get/store/products').then((response) => {
                 commit('setProducts', response.data)
@@ -92,9 +99,9 @@ const store = createStore({
                 commit('setLoading', false)
             });
         },
-        getUserProducts({ commit }) {
+        getUserProducts({commit}) {
             commit('setLoading', true)
-            axios.post(this.state.api + 'get/user/products?user_id='+ this.state.user.id).then((response) => {
+            axios.post(this.state.api + 'get/user/products?user_id=' + this.state.user.id).then((response) => {
                 commit('setUserProducts', response.data)
             }).catch(function (error) {
                 console.log(error)
@@ -103,13 +110,93 @@ const store = createStore({
                 commit('setLoading', false)
             });
         },
+        getUserWallet({commit}) {
+            commit('setLoading', true)
+            axios.post(this.state.api + 'get/user/wallet?app_user=' + this.state.user.id).then((response) => {
+                commit('setUserWallet', response.data)
+            }).catch(function (error) {
+                console.log(error)
+
+            }).finally(function () {
+                commit('setLoading', false)
+            });
+        },
+        getUserStats({commit}) {
+            commit('setLoading', true)
+
+            axios.post(this.state.api + 'get/user/stats?user_id=' + this.state.user.id).then((response) => {
+                commit('setUserStats', response.data)
+
+            }).catch(function (error) {
+                console.log(error)
+
+            }).finally(function () {
+                commit('setLoading', false)
+
+            });
+        },
+        saveUserSettings({commit}) {
+            commit('setLoading', true)
+
+            axios.post(this.state.api + 'set/user/settings', {
+                app_user: this.state.user.id,
+                name: this.state.user.name,
+                lastname: this.state.user.lastname,
+                second_lastname: this.state.user.second_lastname,
+                address: this.state.user.address,
+                municipality: this.state.user.municipality,
+                city: this.state.user.city,
+                country: this.state.user.country,
+                state: this.state.user.state,
+            }).then((response) => {
+                commit('setUserSettings', response.data)
+
+            }).catch(function (error) {
+                console.log(error)
+
+            }).finally(function () {
+                commit('setLoading', false)
+
+            });
+        },
+        getUserPayments({commit}) {
+            commit('setLoading', true)
+
+            axios.get(this.state.api + 'get/user/payments?app_user=' + this.state.user.id).then((response) => {
+                commit('setUserPayments', response.data)
+
+            }).catch(function (error) {
+                console.log(error)
+
+            }).finally(function () {
+                commit('setLoading', false)
+
+            });
+        },
+        getAgavePrices({commit}) {
+            commit('setLoading', true)
+
+            axios.get(this.state.api + 'get/agave/prices').then((response) => {
+                commit('setPrices', response.data)
+
+                this.prices.forEach(price => this.pricesArray.push(price.price));
+                this.prices.forEach(price => this.yearsArray.push(price.year));
+
+            }).catch(function (error) {
+                console.log(error)
+
+            }).finally(function () {
+                vm.isLoading = false;
+
+            });
+        },
     },
     mutations: {
         clearUser(state) {
             state.isLogged = false;
             state.user = {
                 products: [{
-                    maintenances: []
+                    maintenances: [],
                 }]
             }
         },
@@ -118,8 +205,24 @@ const store = createStore({
             state.user = payload;
             state.user.products = [];
         },
+        setUserSettings(state, payload) {
+            state.user.name = payload.name;
+            state.user.lastname = payload.lastname;
+            state.user.second_lastname = payload.second_lastname;
+            state.user.address = payload.address;
+            state.user.municipality = payload.municipality;
+            state.user.city = payload.city;
+            state.user.state = payload.state;
+
+        },
         setProducts(state, payload) {
             state.products = payload;
+        },
+        setUserWallet(state, payload) {
+            state.wallet = payload;
+        },
+        setUserPayments(state, payload) {
+            state.payments = payload;
         },
         setUserProducts(state, payload) {
             state.user.products = payload;
@@ -132,6 +235,12 @@ const store = createStore({
         },
         setLoading(state, payload) {
             state.isLoading = payload;
+        },
+        setUserStats(state, payload) {
+            state.stats = payload;
+        },
+        setPrices(state, payload) {
+            state.prices = payload;
         }
     }
 })

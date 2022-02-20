@@ -200,6 +200,40 @@ export default {
       this.selectedPrice = arg;
     },
     checkoutPaypal(product) {
+      let t = this.$t;
+      let vm = this;
+
+      product.selectedPrice = this.selectedPrice;
+      product.app_user = this.$store.state.user.id;
+
+      if (parseInt(product.checkoutQty) > parseInt(product.quantity)) {
+        f7.dialog.alert(t("strings.max_error"));
+      } else {
+
+        if (product.user.type_id !== 1) {
+          product.price = this.getProductPriceByYear(product.planted_at);
+        }
+
+        this.$store.dispatch('setLoading', true);
+        const response = this.axios.post(this.$store.state.api + 'paypal/checkout', product).then((response) => {
+
+            let links = response.data.result.links;
+            links.forEach(function (item, index) {
+              if (item.rel === "approve") {
+                vm.openBrowser(item.href);
+              }
+            });
+
+
+        }).catch(function (error) {
+          f7.dialog.alert(error);
+
+
+        }).finally(function () {
+          vm.$store.dispatch('setLoading', false);
+
+        });
+      }
     },
     checkoutMercadoPago(product) {
       let t = this.$t;
@@ -218,17 +252,6 @@ export default {
 
         this.$store.dispatch('setLoading', true);
         const response = this.axios.post(this.$store.state.api + 'checkout', product).then((response) => {
-          /*const mp = new window["MercadoPago"](
-              vm.$store.state.MP_TOKEN, {
-                locale: 'es-MX'
-              }
-          );
-          console.log(mp);
-          mp.checkout({
-            preference: {id: response.data.id},
-            render: {container: '.mp-container' + product.id, label: this.$t('buttons.checkout'),},
-            autoOpen: true,
-          });*/
           vm.openBrowser(response.data.init_point);
         }).catch(function (error) {
           f7.dialog.alert(error);
@@ -242,8 +265,8 @@ export default {
       }
     },
     openBrowser(url) {
-      let options = "location=no,clearcache=yes,clearsessioncache=yes,zoom=yes,EnableViewPortScale=yes"
-      let ref = cordova.InAppBrowser.open(url, '_system', options);
+        let options = "location=no,clearcache=yes,clearsessioncache=yes,zoom=yes,EnableViewPortScale=yes"
+        let ref = cordova.InAppBrowser.open(url, '_system', options);
     },
   },
 };

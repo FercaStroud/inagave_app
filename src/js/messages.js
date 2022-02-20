@@ -54,6 +54,11 @@ const messages = {
             pay_with: 'Pay With',
             mercadopago: 'Mercado Pago',
             paypal: 'PayPal',
+            my_wallet_transactions: 'History Transactions',
+            amount: 'Amount',
+            status: 'Status',
+            bank: 'Bank',
+            account: 'Account',
         },
         buttons: {
             login: 'Login',
@@ -67,6 +72,8 @@ const messages = {
             spanish: 'Spanish',
             english: 'English',
             checkout: 'Checkout',
+            request: 'Request Withdraw',
+            request_received: 'Request Received',
 
             with_maintenance: 'W/ - M',
             without_maintenance: 'W/O - M',
@@ -135,6 +142,12 @@ const messages = {
             mercadopago: 'Mercado Pago',
             paypal: 'PayPal',
             max_error: 'El total excede la cantidad máxima disponible',
+            my_wallet_transactions: 'Historial de transacciones',
+            amount: 'Cantidad',
+            status: 'Estado',
+            bank: 'Banco',
+            account: 'Cuenta',
+            request_received: 'Solicitud Recibida',
         },
         buttons: {
             login: 'Iniciar Sesión',
@@ -146,6 +159,7 @@ const messages = {
             show_in_maps: 'Ver en Maps',
             save: 'Guardar',
             checkout: 'Pagar',
+            request: 'Solicitar Retiro',
 
             with_maintenance: 'C/ - M',
             without_maintenance: 'S/ - M',

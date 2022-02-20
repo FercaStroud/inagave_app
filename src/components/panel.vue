@@ -8,8 +8,8 @@ f7-panel(right='' reveal='' )
           strong.roboto-thin {{$store.state.user.name}} {{$store.state.user.lastname}}, {{ $t("strings.welcome") }}
         f7-nav-right
       f7-list()
-        f7-list-button(popup-open=".withdraws-popup" panel-close :text='$t("pages.withdraws")')
-        f7-list-button(popup-open=".payments-popup" panel-close :text='$t("pages.payments")')
+        f7-list-button(@click="$store.dispatch('getUserWallet');" popup-open=".withdraws-popup" panel-close :text='$t("pages.withdraws")')
+        f7-list-button(@click="$store.dispatch('getUserPayments');"  popup-open=".payments-popup" panel-close :text='$t("pages.payments")')
         f7-list-button(popup-open=".settings-popup" panel-close :text='$t("pages.settings")')
         f7-list-button(@click="clearUser" panel-close :text='$t("buttons.logout")')
 
