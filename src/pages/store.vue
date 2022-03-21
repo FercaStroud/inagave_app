@@ -43,9 +43,9 @@ f7-page(name="store")
     style="background: transparent !important"
   )
     f7-card-content(:padding='false')
-      .bg-color-primary(:style="{height: '60px'}")
+      .bg-color-primary(:style="{height: '300px'}")
         f7-card-header.display-block(text-color='white') {{product.estate}}
-          //p
+          p
             small(:style='{opacity: 0.7}') {{ $t("strings.with_maintenance") }}
             br
             strong ${{product.maintenance_price}} (MXN)
@@ -110,9 +110,9 @@ f7-page(name="store")
         f7-row
           f7-col(v-html="product.description" )
 
-        f7-row.margin-top
+        f7-row.margin-top(v-if="$store.state.stats.store === 1" )
           f7-col.bg-color-primary(style="height:2px;")
-        f7-row.margin-top
+        f7-row.margin-top(v-if="$store.state.stats.store === 1" )
           f7-col
             f7-list(inset)
               f7-list-input(
@@ -122,21 +122,21 @@ f7-page(name="store")
                 clear-button
                 v-model:value="product.checkoutQty"
               )
-        f7-row.margin-top
+        f7-row.margin-top(v-if="$store.state.stats.store === 1" )
           f7-col()
             strong {{ $t("strings.total") }}:
             span.margin-left(v-if="selectedPrice === 'inagave'") $ {{ parseFloat(product.checkoutQty * product.maintenance_price).toFixed(2)  }} (MXN)
             span.margin-left(v-else) $ {{ parseFloat(product.checkoutQty * product.price).toFixed(2)  }} (MXN)
-        f7-row.margin-top
+        f7-row.margin-top(v-if="$store.state.stats.store === 1" )
           f7-col()
             f7-button(@click="setSelectedPrice('maintenance')") {{ $t("strings.with_maintenance") }}
           f7-col()
             f7-button(@click="setSelectedPrice('inagave')") {{ $t("strings.without_maintenance") }}
 
-        f7-row.margin-top
+        f7-row.margin-top(v-if="$store.state.stats.store === 1" )
           f7-col()
             strong {{ $t("strings.pay_with") }} :
-        f7-row.margin-top
+        f7-row.margin-top(v-if="$store.state.stats.store === 1" )
           f7-col()
             f7-button(
               fill
@@ -220,6 +220,7 @@ export default {
             let links = response.data.result.links;
             links.forEach(function (item, index) {
               if (item.rel === "approve") {
+                vm.$store.dispatch('setLoading', false);
                 vm.openBrowser(item.href);
               }
             });
@@ -252,6 +253,7 @@ export default {
 
         this.$store.dispatch('setLoading', true);
         const response = this.axios.post(this.$store.state.api + 'checkout', product).then((response) => {
+          vm.$store.dispatch('setLoading', false);
           vm.openBrowser(response.data.init_point);
         }).catch(function (error) {
           f7.dialog.alert(error);
