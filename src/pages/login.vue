@@ -63,8 +63,8 @@ export default {
   },
   data() {
     return {
-      email: 'hola@ferca.dev',
-      password: 'normal',
+      email: '',
+      password: '',
       registerModal: false,
       form: {
         name: '',
