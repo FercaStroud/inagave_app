@@ -26,6 +26,8 @@ const messages = {
             total_founds: 'Total funds in my account',
             total_investment: 'Total investment in plants (Estimated)',
             total_plants: 'My Plants (Total)',
+            total_plants_m_inagave: 'Plants (INAGAVE METHOD)',
+            total_plants_m_total: 'Plants (TOTAL METHOD)',
 
             with_maintenance: 'With Maintenance',
             without_maintenance: 'Without Maintenance',
@@ -113,6 +115,9 @@ const messages = {
             total_founds: 'Total de Fondos en mi Cuenta',
             total_investment: 'Inversión total en Plantas (Estimado)',
             total_plants: 'Mis Plantas (Total)',
+
+            total_plants_m_inagave: 'Plantas con Método Inagave',
+            total_plants_m_total: 'Plantas con Método Total',
 
             with_maintenance: 'Con Mantenimiento',
             without_maintenance: 'Sin Mantenimiento',

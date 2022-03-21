@@ -58,6 +58,8 @@ const store = createStore({
                 }]
             },
             stats: {
+                total_plants_m_total: 0,
+                total_plants_m_inagave: 0,
                 total_plant_founds: 0,
                 total_plants: 0,
                 total_user_founds: 0,

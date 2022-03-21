@@ -46,6 +46,19 @@ f7-page(name="home" :page-content="false" @page:init="onPageInit")
           )
 
       f7-block(v-if="!$store.state.isLoading")
+        f7-block-header {{$t("strings.total_plants_m_inagave")}}
+        f7-card
+          f7-card-header
+            strong(style="color:#3A7C8D") {{$store.state.stats.total_plants_m_inagave}} {{$t("strings.plants")}}
+
+
+      f7-block(v-if="!$store.state.isLoading")
+        f7-block-header {{$t("strings.total_plants_m_total")}}
+        f7-card
+          f7-card-header
+            strong(style="color:#3A7C8D") {{$store.state.stats.total_plants_m_total}} {{$t("strings.plants")}}
+
+      f7-block(v-if="!$store.state.isLoading")
         f7-block-header {{$t("strings.total_plants")}}
         f7-card
           f7-card-header
